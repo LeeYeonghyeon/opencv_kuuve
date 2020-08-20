@@ -1,0 +1,10 @@
+bool is_intersection
+bool is_crosswalk
+bool is_right
+bool is_left
+bool is_construction
+bool is_parking
+bool is_bicycle
+bool is_kidzone
+bool is_speedbump
+bool is_bus

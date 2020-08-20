@@ -1,0 +1,128 @@
+<launch>
+
+
+<!--  threshold  -->
+	<arg name="binary_threshold" default = "170" />
+	<arg name="ypix_min" default = "80" /> <!--100-->
+	<arg name="win_ypix_min" default = "30" /> <!--60-->
+	<arg name="rgb_th_" default="200"/>
+
+	<!-- steer ,speed-->
+
+	<arg name="steer_y_" default = "12" />
+	<arg name="platform_speed_" default="3.0"/>
+
+<!--  b_e_v  -->
+	<arg name="src_left_upper_xpos" default="295" />	
+	<arg name="src_left_upper_ypos" default="468" />
+	<arg name="src_right_upper_xpos" default="955" />	
+	<arg name="src_right_upper_ypos" default="468" />	
+	<arg name="src_left_lower_xpos" default="0" />	
+	<arg name="src_left_lower_ypos" default="720" />	
+	<arg name="src_right_lower_xpos" default="1280" />	
+	<arg name="src_right_lower_ypos" default="720" />	
+
+
+<!--  boxes  -->	
+	<arg name="l_offset_" default="64" />
+	<arg name="r_offset_" default="64" />	
+	<arg name="height_set_" default="36" />
+
+
+<!--  point  -->
+	<arg name="set1_ly_" default="320"/>
+	<arg name="set2_ly_" default="340"/>
+	<arg name="set3_ly_" default="360"/>
+	<arg name="set1_ry_" default="320"/>
+	<arg name="set2_ry_" default="340"/>
+	<arg name="set3_ry_" default="360"/>
+
+
+<!--  pid  -->
+	<arg name="Kp_" default="1.0"/>
+	<arg name="Kd_" default="0.0"/>
+	<arg name="Ki_" default="0.0"/>
+	<arg name="pid_weight_" default="0.3" />
+
+	<arg name="als_" default="0.5"/>
+		
+
+
+
+
+
+
+<!--  bye  -->
+
+
+	<arg name="left_merge_xpos" default="640" />
+	<arg name="right_merge_xpos" default="640" />
+
+	<arg name="mode_select" default="2" />
+
+	<arg name="xpix_distance" default="0.00192" />
+
+	<arg name="dst_left_upper_xpos" default="0" />	
+	<arg name="dst_left_upper_ypos" default="0" />	
+	<arg name="dst_right_upper_xpos" default="1280" />	
+	<arg name="dst_right_upper_ypos" default="0" />	
+	<arg name="dst_left_lower_xpos" default="0" />	
+	<arg name="dst_left_lower_ypos" default="720" />	
+	<arg name="dst_right_lower_xpos" default="1280" />	
+	<arg name="dst_right_lower_ypos" default="720" />	
+
+	<node name="pams_lane_detector_node" pkg="pams_lane_detector" type="pams_lane_detector" output="screen">
+		<param name="mode_select" value="$(arg mode_select)" />
+		<param name="binary_threshold" value="$(arg binary_threshold)" />
+		<param name="xpix_distance" value="$(arg xpix_distance)" />
+		<param name="ypix_min" value="$(arg ypix_min)" />		
+		<param name="win_ypix_min" value="$(arg win_ypix_min)" />
+
+		<param name="l_offset" value="$(arg l_offset_)"/>
+		<param name="r_offset" value="$(arg r_offset_)"/>
+		<param name="height_set" value="$(arg height_set_)"/>
+		
+
+		<param name="left_merge_xpos" value="$(arg left_merge_xpos)" />
+		<param name="right_merge_xpos" value="$(arg right_merge_xpos)" />
+		
+
+		<param name="set1_ly" value="$(arg set1_ly_)"/>
+		<param name="set2_ly" value="$(arg set2_ly_)"/>
+		<param name="set3_ly" value="$(arg set3_ly_)"/>
+		<param name="set1_ry" value="$(arg set1_ry_)"/>
+		<param name="set2_ry" value="$(arg set2_ry_)"/>
+		<param name="set3_ry" value="$(arg set3_ry_)"/>
+
+		<param name="Kp" value="$(arg Kp_)" />
+		<param name="Kd" value="$(arg Kd_)" />
+		<param name="Ki" value="$(arg Ki_)" />
+		<param name="als" value="$(arg als_)" />
+
+		<param name="platform_speed" value="$(arg platform_speed_)"/>
+
+
+		<param name="rgb_th" value="$(arg rgb_th_)" />
+
+		<param name="steer_y" value="$(arg steer_y_)" />
+
+		<param name="src_left_upper_xpos" value="$(arg src_left_upper_xpos)" />
+		<param name="src_left_upper_ypos" value="$(arg src_left_upper_ypos)" />
+		<param name="src_right_upper_xpos" value="$(arg src_right_upper_xpos)" />
+		<param name="src_right_upper_ypos" value="$(arg src_right_upper_ypos)" />
+		<param name="src_left_lower_xpos" value="$(arg src_left_lower_xpos)" />
+		<param name="src_left_lower_ypos" value="$(arg src_left_lower_ypos)" />
+		<param name="src_right_lower_xpos" value="$(arg src_right_lower_xpos)" />
+		<param name="src_right_lower_ypos" value="$(arg src_right_lower_ypos)" />
+		
+		<param name="dst_left_upper_xpos" value="$(arg dst_left_upper_xpos)" />
+		<param name="dst_left_upper_ypos" value="$(arg dst_left_upper_ypos)" />
+		<param name="dst_right_upper_xpos" value="$(arg dst_right_upper_xpos)" />
+		<param name="dst_right_upper_ypos" value="$(arg dst_right_upper_ypos)" />
+		<param name="dst_left_lower_xpos" value="$(arg dst_left_lower_xpos)" />
+		<param name="dst_left_lower_ypos" value="$(arg dst_left_lower_ypos)" />
+		<param name="dst_right_lower_xpos" value="$(arg dst_right_lower_xpos)" />
+		<param name="dst_right_lower_ypos" value="$(arg dst_right_lower_ypos)" />
+		<param name="pid_weight" value="$(arg pid_weight_)" />
+	</node>
+</launch>
